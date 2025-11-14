@@ -16,7 +16,7 @@ const navLinks = [
 
 export default function GlobalHeader() {
   return (
-    <header className="fixed top-0 left-0 w-full h-14 bg-card border-b backdrop-blur-md">
+    <header className="fixed top-0 left-0 z-10 w-full h-14 bg-card border-b backdrop-blur-md">
       <nav className="container flex items-center gap-2 mx-auto px-4 h-14">
         {navLinks.map(({ href, label, icon }) => (
           <HeaderNavLink key={href} href={href} label={label} icon={icon} />
