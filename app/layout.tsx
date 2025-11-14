@@ -1,5 +1,8 @@
 import '@/app/globals.css';
 import GlobalHeader from '@/components/global/header';
+import GlobalPodcastPlayer from '@/components/global/podcast-player';
+import PlayerProvider from '@/providers/podcast-player-provider';
+import ReactQueryProvider from '@/providers/react-query';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Toaster } from 'sonner';
@@ -22,11 +25,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <GlobalHeader />
-        {children}
-        <Toaster position="top-center" richColors />
-      </body>
+      <ReactQueryProvider>
+        <PlayerProvider>
+          <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <GlobalHeader />
+            {children}
+            <GlobalPodcastPlayer />
+            <Toaster position="top-center" richColors />
+          </body>
+        </PlayerProvider>
+      </ReactQueryProvider>
     </html>
   );
 }

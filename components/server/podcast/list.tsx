@@ -5,5 +5,9 @@ interface PodcastListProps {
 }
 
 export default function PodcastList({ children }: Readonly<PodcastListProps>) {
-  return <div role="list">{children}</div>;
+  return (
+    <div role="list" className="max-h-64 overflow-y-auto">
+      {children}
+    </div>
+  );
 }

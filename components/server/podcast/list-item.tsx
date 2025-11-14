@@ -1,3 +1,4 @@
+import { PodcastPlayButton } from '@/components/client/podcast';
 import Link from 'next/link';
 
 interface PodcastListItemProps {
@@ -7,7 +8,7 @@ interface PodcastListItemProps {
 
 export default function PodcastListItem({ index, item: filename }: Readonly<PodcastListItemProps>) {
   return (
-    <div role="listitem" className="px-3 py-2 flex gap-2 border-b last:border-b-0">
+    <div role="listitem" className="pl-3 flex items-center gap-2 border-b last:border-b-0">
       <span className="font-semibold text-sm text-muted-foreground">{index + 1}</span>
       <Link
         href={`${process.env.NEXT_PUBLIC_API_HOST}/podcasts/${filename}.mp3`}
@@ -17,6 +18,7 @@ export default function PodcastListItem({ index, item: filename }: Readonly<Podc
       >
         {filename}
       </Link>
+      <PodcastPlayButton filename={filename} />
     </div>
   );
 }
