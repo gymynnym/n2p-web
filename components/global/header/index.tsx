@@ -1,3 +1,4 @@
+import { ThemeSwitch } from '@/components/client/common';
 import HeaderNavLink from '@/components/global/header/nav-link';
 
 const navLinks = [
@@ -20,6 +21,7 @@ export default function GlobalHeader() {
         {navLinks.map(({ href, label, icon }) => (
           <HeaderNavLink key={href} href={href} label={label} icon={icon} />
         ))}
+        <ThemeSwitch className="ml-auto" />
       </nav>
     </header>
   );

@@ -28,7 +28,11 @@ export default function NewsListItem({ index, item, type }: Readonly<NewsListIte
     <div role="listitem" className="px-3 py-2 flex gap-2 border-b last:border-b-0">
       <span className="font-semibold text-sm text-muted-foreground">{index + 1}</span>
       <div className="flex flex-1 flex-col">
-        <Link href={url.toString()} target="_blank" className="w-fit text-sm text-blue-600 hover:underline">
+        <Link
+          href={url.toString()}
+          target="_blank"
+          className="w-fit text-sm text-blue-600 dark:text-blue-400 hover:underline"
+        >
           {url.host}
         </Link>
         <Link href={newsURL} target="_blank" className="w-fit font-medium hover:underline">

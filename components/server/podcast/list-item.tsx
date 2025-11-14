@@ -14,7 +14,7 @@ export default function PodcastListItem({ index, item: filename }: Readonly<Podc
         href={`${process.env.NEXT_PUBLIC_API_HOST}/podcasts/${filename}.mp3`}
         prefetch={false}
         target="_blank"
-        className="w-fit text-sm text-blue-600 hover:underline"
+        className="w-fit text-sm text-blue-600 dark:text-blue-400 hover:underline"
       >
         {filename}
       </Link>
