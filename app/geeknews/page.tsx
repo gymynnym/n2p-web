@@ -1,7 +1,8 @@
 import { getGeekNewsPodcasts, getTopGeekNewsItems } from '@/apis/server/geeknews';
+import { PodcastGenerateForm } from '@/components/client/podcast';
 import { NewsList, NewsListItem } from '@/components/server/news';
 import { PodcastList, PodcastListItem } from '@/components/server/podcast';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default async function GeekNewsPage() {
   const [newsRes, podcastsRes] = await Promise.all([getTopGeekNewsItems(), getGeekNewsPodcasts()]);
@@ -25,7 +26,7 @@ export default async function GeekNewsPage() {
           </CardContent>
         </Card>
         <aside className="lg:sticky lg:top-18 lg:max-w-md w-full h-fit">
-          <Card className="w-full gap-0 py-0 ">
+          <Card className="w-full gap-0 pt-0">
             <CardHeader className="pt-4 text-accent-foreground bg-accent border-b">
               <CardTitle>GeekNews Top Stories</CardTitle>
               <CardDescription>The top stories from GeekNews, update every 1 hour.</CardDescription>
@@ -37,6 +38,10 @@ export default async function GeekNewsPage() {
                 ))}
               </PodcastList>
             </CardContent>
+            <CardFooter className="space-y-4 border-t">
+              <CardDescription>Generate a podcast episode from the latest GeekNews top stories.</CardDescription>
+              <PodcastGenerateForm type="geeknews" />
+            </CardFooter>
           </Card>
         </aside>
       </section>
