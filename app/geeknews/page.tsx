@@ -4,6 +4,8 @@ import { NewsList, NewsListItem } from '@/components/server/news';
 import { PodcastList, PodcastListItem } from '@/components/server/podcast';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
+export const dynamic = 'force-dynamic';
+
 export default async function GeekNewsPage() {
   const [newsRes, podcastsRes] = await Promise.all([getTopGeekNewsItems(), getGeekNewsPodcasts()]);
   const { data: news } = newsRes;

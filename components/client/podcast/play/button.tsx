@@ -15,7 +15,7 @@ export default function PodcastPlayButton({ filename }: Readonly<PodcastPlayButt
     <Button
       variant={'outline'}
       size={'icon'}
-      className="ml-auto size-8 border-y-0 border-r-0 rounded-none"
+      className="size-8 border-y-0 border-r-0 rounded-none"
       onClick={() => setFilename(filename)}
     >
       <PlayIcon className="size-3.5" />

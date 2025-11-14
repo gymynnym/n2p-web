@@ -4,6 +4,8 @@ import { NewsList, NewsListItem } from '@/components/server/news';
 import { PodcastList, PodcastListItem } from '@/components/server/podcast';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
+export const dynamic = 'force-dynamic';
+
 export default async function HackerNewsPage() {
   const [newsRes, podcastsRes] = await Promise.all([getTopHackerNewsItems(), getHackerNewsPodcasts()]);
   const { data: news } = newsRes;
