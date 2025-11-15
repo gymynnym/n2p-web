@@ -30,8 +30,8 @@ export default async function HackerNewsPage() {
         <aside className="lg:sticky lg:top-18 lg:max-w-md w-full h-fit">
           <Card className="w-full gap-0 pt-0">
             <CardHeader className="pt-4 text-accent-foreground bg-accent border-b">
-              <CardTitle>HackerNews Top Stories</CardTitle>
-              <CardDescription>The top stories from HackerNews, update every 1 hour.</CardDescription>
+              <CardTitle>HackerNews Podcasts</CardTitle>
+              <CardDescription>The latest podcasts generated from HackerNews top stories.</CardDescription>
             </CardHeader>
             <CardContent className="px-0">
               <PodcastList>
