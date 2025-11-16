@@ -7,6 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
 import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { TEXT_MODEL_OPTIONS, TTS_MODEL_OPTIONS } from '@/constants/options';
 import { podcastGenerateSchema } from '@/schemas/podcast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -114,8 +115,11 @@ export default function PodcastGenerateForm({ type }: Readonly<PodcastGenerateFo
                       <SelectValue placeholder="Text Model" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="gpt-4.1-mini">GPT-4.1 Mini</SelectItem>
-                      <SelectItem value="gpt-4.1">GPT-4.1</SelectItem>
+                      {Object.entries(TEXT_MODEL_OPTIONS).map(([value, label]) => (
+                        <SelectItem key={value} value={value}>
+                          {label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </FormControl>
@@ -135,8 +139,11 @@ export default function PodcastGenerateForm({ type }: Readonly<PodcastGenerateFo
                       <SelectValue placeholder="TTS Model" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="gemini-2.5-flash-tts">Gemini 2.5 Flash TTS</SelectItem>
-                      <SelectItem value="gemini-2.5-pro-tts">Gemini 2.5 Pro TTS</SelectItem>
+                      {Object.entries(TTS_MODEL_OPTIONS).map(([value, label]) => (
+                        <SelectItem key={value} value={value}>
+                          {label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </FormControl>
