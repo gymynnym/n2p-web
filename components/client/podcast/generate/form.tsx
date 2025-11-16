@@ -7,6 +7,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
 import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Slider } from '@/components/ui/slider';
 import { TEXT_MODEL_OPTIONS, TTS_MODEL_OPTIONS } from '@/constants/options';
 import { podcastGenerateSchema } from '@/schemas/podcast';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -45,9 +46,14 @@ interface PodcastGenerateFormProps {
 }
 
 export default function PodcastGenerateForm({ type }: Readonly<PodcastGenerateFormProps>) {
-  const form = useForm<z.infer<typeof podcastGenerateSchema>>({
+  const form = useForm({
     resolver: zodResolver(podcastGenerateSchema),
-    defaultValues: { textModel: 'gpt-4.1-mini', ttsModel: 'gemini-2.5-flash-tts', filenamePrefix: `${type}_` },
+    defaultValues: {
+      limit: 3,
+      textModel: 'gpt-4.1-mini',
+      ttsModel: 'gemini-2.5-flash-tts',
+      filenamePrefix: `${type}_`,
+    },
   });
   const router = useRouter();
   const [status, setStatus] = useState<PodcastGenerateStatus>('idle');
@@ -84,6 +90,29 @@ export default function PodcastGenerateForm({ type }: Readonly<PodcastGenerateFo
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full space-y-2">
+        <FormField
+          control={form.control}
+          name="limit"
+          render={({ field }) => {
+            const { value, onChange, ...rest } = field;
+            return (
+              <FormItem>
+                <FormLabel>Number of News ({value?.toString() || '0'})</FormLabel>
+                <FormControl className="py-1">
+                  <Slider
+                    min={1}
+                    max={10}
+                    step={1}
+                    value={[Number(value)]}
+                    onValueChange={(val) => onChange(val[0])}
+                    {...rest}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
         <FormField
           control={form.control}
           name="filenamePrefix"
